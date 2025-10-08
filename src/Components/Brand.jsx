@@ -7,13 +7,13 @@ const Brand = () => {
       <div className="container text-center text-white">
         <motion.p
           className="m-0 heading fs-5"
-          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-          animate={{
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
-            transition: { duration: 0.8, ease: "easeOut" },
+            transition: { duration: 0.3, ease: "easeOut", delay: 0 },
           }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         >
           Lo Surdo Braithwaite has been established since 1972 providing
           business and taxation services to the broader community.

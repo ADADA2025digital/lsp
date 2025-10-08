@@ -11,7 +11,7 @@
 }
 
 .banner {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
 }
 
 .dark-text {
@@ -20,6 +20,22 @@
 
 .breadcrumb-item + .breadcrumb-item::before {
   color: #fff !important;
+}
+
+.button-bg {
+  background: var(--primary-color);
+}
+
+.button-bg:hover {
+  background: #cc003d;
+}
+
+.react-multi-carousel-dot--active button {
+  background: #99002f !important;
+}
+
+.react-multi-carousel-dot button {
+  border-color: #99002e55 !important;
 }
 
 /* Header */
@@ -33,7 +49,21 @@ footer {
   background-color: var(--primary-color);
 }
 
+.nav-item.active {
+  background-color: var(--primary-color);
+}
+
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: #fff !important; /* optional for contrast */
+  border-radius: 4px; /* optional to make it look like a button */
+}
+
 .nav-item:hover .nav-link {
+  color: white !important;
+}
+
+.nav-item.active .nav-link {
   color: white !important;
 }
 
@@ -90,7 +120,7 @@ footer {
 
 .button:hover {
   letter-spacing: 2px;
-  border-image: linear-gradient(135deg, #99002f 0%, #ee9bb4 100%);
+  border-image: var(--primary-color);
   border-image-slice: 1;
 }
 
@@ -148,11 +178,11 @@ footer {
 }
 
 .contact-hero .overlay {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .panel:hover {
-  background: #cc003d;
+  background: #cc003d !important;
   transition: background 180ms ease-in-out;
 }
 
@@ -161,22 +191,22 @@ footer {
 }
 
 @media (max-width: 950px) {
-.contact-hero .row {
-  top: 100px;
-}
+  .contact-hero .row {
+    top: 100px;
+  }
 }
 
 @media (max-width: 480px) {
-.contact-hero .row {
-  top: 100px;
-}
+  .contact-hero .row {
+    top: 100px;
+  }
 }
 
 /* Home Page */
 .service-underline {
-  width: 75%;
+  width: 80%;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--primary-color) !important;
 }
 
 .importance-underline {
@@ -198,6 +228,7 @@ footer {
   transform: translateY(-800px);
   pointer-events: none;
 }
+
 .scroll-to-top.show {
   opacity: 1;
   transform: translateY(0);
@@ -212,7 +243,7 @@ footer {
   height: 0%;
   left: 50%;
   top: 50%;
-  background-color: rgba(209, 188, 188, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   transform: translate(-50%, -50%) rotate(-45deg);
   z-index: 1;
 }
@@ -231,12 +262,12 @@ footer {
 }
 
 /* services section */
-.service-card {
+.important-card {
   transition: color 0.4s ease;
   cursor: pointer;
 }
 
-.service-card::before {
+.important-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -248,6 +279,67 @@ footer {
   padding: 50px !important;
 }
 
-.service-card:hover::before {
+.important-card:hover::before {
   transform: scaleY(1);
+}
+
+.bar {
+  width: 40px;
+  height: 4px;
+  background-color: #ddd;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bar:hover {
+  background-color: var(--primary-color);
+  transform: scaleY(1.2);
+}
+
+.bar.active {
+  background-color: var(--primary-color);
+  transform: scaleY(1.5);
+}
+
+.service-carousel-item {
+  padding: 0 10px;
+}
+
+/* Why Choose Us  */
+.choose-card {
+  position: relative;
+  flex-basis: calc(33.33333% - 30px);
+  margin: 0 15px 30px;
+  overflow: hidden;
+}
+
+.choose-card-bg {
+  position: absolute;
+  top: -75px;
+  left: -75px;
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #cc003d, #99002f);
+  z-index: 0;
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+
+.choose-card:hover .choose-card-bg {
+  transform: scale(10);
+}
+
+.choose-card:hover .service-underline {
+  background: #ffffff !important;
+}
+
+.choose-card:hover p {
+  color: #fff !important;
+}
+
+.choose-card > *:not(.choose-card-bg) {
+  position: relative;
+  z-index: 1;
 }

@@ -1,10 +1,34 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import PageHeader from "../Components/PageHeader";
 import { servicesContent, sliderImages, seoData } from "../Contants/Data";
 import SeoHead from "../Components/SeoHead";
 
 const Services = () => {
+  const [searchParams] = useSearchParams();
+  const [activeService, setActiveService] = useState(0);
+
+  useEffect(() => {
+    const serviceParam = searchParams.get('service');
+    if (serviceParam !== null) {
+      const serviceIndex = parseInt(serviceParam, 10);
+      if (serviceIndex >= 0 && serviceIndex < servicesContent.length) {
+        setActiveService(serviceIndex);
+        
+        // Scroll to the services section after a short delay to ensure the page is loaded
+        setTimeout(() => {
+          const servicesSection = document.getElementById('servicesAccordion');
+          if (servicesSection) {
+            servicesSection.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }
+        }, 500);
+      }
+    }
+  }, [searchParams]);
+
   return (
     <>
       <SeoHead {...seoData.services} />
@@ -83,35 +107,21 @@ const Services = () => {
               <div id="servicesAccordion">
                 {servicesContent.map((service, idx) => {
                   const collapseId = `svc-collapse-${idx}`;
-                  const isFirst = idx === 0;
+                  const isFirst = idx === activeService;
 
                   return (
-                    <motion.div
+                    <div
                       key={idx}
                       className="mb-2"
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.5, delay: idx * 0.06 },
-                      }}
-                      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                     >
                       {/* Header */}
-                      <motion.button
+                      <button
                         className="w-100 d-flex align-items-center justify-content-between list-btn text-start px-4 py-3 bg-light border rounded-0"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target={`#${collapseId}`}
                         aria-expanded={isFirst ? "true" : "false"}
                         aria-controls={collapseId}
-                        whileHover={{ scale: 1.01 }}
-                        whileTap={{ scale: 0.99 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 20,
-                        }}
                       >
                         <span className="fw-semibold text-secondary">
                           {idx + 1}.&nbsp; {service.title}
@@ -121,7 +131,7 @@ const Services = () => {
                             isFirst ? "bi-dash-lg" : "bi-plus-lg"
                           } text-muted ms-3`}
                         ></i>
-                      </motion.button>
+                      </button>
 
                       {/* Body */}
                       <div
@@ -131,16 +141,7 @@ const Services = () => {
                         } rounded-0 border`}
                         data-bs-parent="#servicesAccordion"
                       >
-                        <motion.div
-                          className="px-4 py-3 bg-light"
-                          initial={{ opacity: 0, y: 8 }}
-                          whileInView={{
-                            opacity: 1,
-                            y: 0,
-                            transition: { duration: 0.4 },
-                          }}
-                          viewport={{ once: true }}
-                        >
+                        <div className="px-4 py-3 bg-light">
                           {service.content.map((item, i) =>
                             item.type === "paragraph" ? (
                               <p key={i} className="mb-2 text-muted small">
@@ -149,30 +150,17 @@ const Services = () => {
                             ) : (
                               <ul key={i} className="mt-3 list-unstyled">
                                 {item.items.map((li, j) => (
-                                  <motion.li
-                                    key={j}
-                                    className="text-muted"
-                                    initial={{ opacity: 0, x: -10 }}
-                                    whileInView={{
-                                      opacity: 1,
-                                      x: 0,
-                                      transition: {
-                                        duration: 0.35,
-                                        delay: j * 0.05,
-                                      },
-                                    }}
-                                    viewport={{ once: true }}
-                                  >
+                                  <li key={j} className="text-muted">
                                     <i className="bi bi-arrow-right-short dark-text me-1"></i>{" "}
                                     {li}
-                                  </motion.li>
+                                  </li>
                                 ))}
                               </ul>
                             )
                           )}
-                        </motion.div>
+                        </div>
                       </div>
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
@@ -180,17 +168,7 @@ const Services = () => {
 
             {/* Right column */}
             <div className="col-lg-4">
-              <motion.div
-                className="card border rounded-0 mb-4 text-center"
-                initial={{ opacity: 0, scale: 0.98, y: 10 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  transition: { duration: 0.45 },
-                }}
-                viewport={{ once: true }}
-              >
+              <div className="card border rounded-0 mb-4 text-center">
                 <div className="card-body py-4">
                   <div
                     className="d-inline-flex align-items-center justify-content-center rounded-circle border"
@@ -198,31 +176,13 @@ const Services = () => {
                   >
                     <i className="bi bi-telephone-outbound-fill dark-text fs-3"></i>
                   </div>
-                  <motion.h3
-                    className="mt-3 mb-0 fw-bold dark-text"
-                    initial={{ opacity: 0, y: 6 }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.35, delay: 0.1 },
-                    }}
-                    viewport={{ once: true }}
-                  >
+                  <h3 className="mt-3 mb-0 fw-bold dark-text">
                     02 9819 7799
-                  </motion.h3>
+                  </h3>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="card border rounded-0"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.45, delay: 0.1 },
-                }}
-                viewport={{ once: true }}
-              >
+              <div className="card border rounded-0">
                 <div className="card-header banner rounded-0 border-0 py-3">
                   <div className="d-flex align-items-center gap-2">
                     <i className="bi bi-building text-white"></i>
@@ -246,13 +206,13 @@ const Services = () => {
                     </div>
                     <div>
                       <span className="fw-semibold">E: </span>
-                      <a href="mailto:info@lsbcpas.com" className="dark-text">
-                        info@lsbcpas.com
+                      <a href="mailto:info@lsbca.com.au" className="dark-text">
+                        info@lsbca.com.au
                       </a>
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>

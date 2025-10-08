@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/Images/logo.png";
 import { motion } from "framer-motion";
 
 export default function Header() {
   const navRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   // Reserve space for fixed navbar + add shadow after a tiny scroll
   useEffect(() => {
@@ -32,6 +33,11 @@ export default function Header() {
         window.bootstrap.Offcanvas.getInstance(offcanvas);
       offcanvasInstance?.hide();
     }
+  };
+
+  // Function to check if a nav item is active
+  const isActive = (path) => {
+    return location.pathname === path;
   };
 
   return (
@@ -73,7 +79,7 @@ export default function Header() {
             >
               <ul className="navbar-nav px-2">
                 <motion.li
-                  className="nav-item px-2 py-3"
+                  className={`nav-item px-2 py-3 ${isActive("/") ? "active" : ""}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{
                     opacity: 1,
@@ -86,7 +92,7 @@ export default function Header() {
                   </Link>
                 </motion.li>
                 <motion.li
-                  className="nav-item px-2 py-3"
+                  className={`nav-item px-2 py-3 ${isActive("/about-us") ? "active" : ""}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{
                     opacity: 1,
@@ -99,7 +105,7 @@ export default function Header() {
                   </Link>
                 </motion.li>
                 <motion.li
-                  className="nav-item px-2 py-3"
+                  className={`nav-item px-2 py-3 ${isActive("/our-clients") ? "active" : ""}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{
                     opacity: 1,
@@ -112,7 +118,7 @@ export default function Header() {
                   </Link>
                 </motion.li>
                 <motion.li
-                  className="nav-item px-2 py-3"
+                  className={`nav-item px-2 py-3 ${isActive("/our-services") ? "active" : ""}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{
                     opacity: 1,
@@ -125,7 +131,7 @@ export default function Header() {
                   </Link>
                 </motion.li>
                 <motion.li
-                  className="nav-item px-2 py-3"
+                  className={`nav-item px-2 py-3 ${isActive("/our-team") ? "active" : ""}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{
                     opacity: 1,
@@ -138,7 +144,7 @@ export default function Header() {
                   </Link>
                 </motion.li>
                 <motion.li
-                  className="nav-item px-2 py-3"
+                  className={`nav-item px-2 py-3 ${isActive("/contact") ? "active" : ""}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{
                     opacity: 1,

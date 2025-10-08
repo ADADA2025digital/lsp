@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
 import PageHeader from "../Components/PageHeader";
 import GlobalButton from "../Components/Button";
 import { contactData, seoData } from "../Contants/Data";
 import SeoHead from "../Components/SeoHead";
 import ReCAPTCHA from "react-google-recaptcha";
+import { motion } from "framer-motion";
 
 const RECAPTCHA_SITE_KEY = "6Ld16dcrAAAAALK46kuJ9CLYZSqFKWW-xuoFOvfc";
 
@@ -93,70 +93,92 @@ const Contact = () => {
       <SeoHead {...seoData.contact} />
 
       <div className="container-fluid p-0">
-        <PageHeader
-          breadcrumbs={[
-            { label: "Home", href: "/", icon: "bi-house-fill" },
-            { label: "Contact", active: true },
-          ]}
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.3, ease: "easeOut", delay: 0 },
+          }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+        >
+          <PageHeader
+            breadcrumbs={[
+              { label: "Home", href: "/", icon: "bi-house-fill" },
+              { label: "Contact", active: true },
+            ]}
+          />
+        </motion.div>
 
         {/* Contact Details section */}
-        <motion.section
-          className="position-relative text-white mt-5"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <section className="position-relative text-white mt-5">
           <div className="container contact-hero p-5">
             <div className="overlay position-absolute top-0 start-0 w-100 h-100"></div>
 
-            <motion.div
-              className="row g-0 position-relative overflow-hidden shadow"
-              initial="hidden"
-              animate="visible"
-            >
+            <div className="row g-0 position-relative overflow-hidden shadow">
               <motion.h2
                 className="display-6 fw-bold mb-4 text-uppercase"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.3, ease: "easeOut", delay: 0 },
+                }}
+                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
               >
                 Contact Us
               </motion.h2>
 
               {contactData.map((panel, idx) => (
-                <motion.div
-                  className="col-12 col-lg-4 z-2"
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <motion.div
-                    className="panel banner p-5 h-100"
-                    transition={{ type: "spring", stiffness: 260, damping: 18 }}
-                  >
+                <div className="col-12 col-lg-4 z-2" key={idx}>
+                  <div className="panel banner p-5 h-100">
                     <div className="d-flex flex-md-row flex-column align-items-md-start align-items-center text-md-start text-center gap-3 p-md-5 p-0">
-                      <motion.i
-                        className={`bi ${panel.icon} fs-1`}
-                        transition={{ duration: 0.25 }}
-                      />
+                      <i className={`bi ${panel.icon} fs-1`} />
                       <div>
-                        <h5 className="mb-2 fw-semibold">{panel.heading}</h5>
+                        <motion.h5
+                          className="mb-2 fw-semibold"
+                          initial={{ opacity: 0, y: 24 }}
+                          whileInView={{
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                              duration: 0.3,
+                              ease: "easeOut",
+                              delay: 0,
+                            },
+                          }}
+                          viewport={{
+                            once: true,
+                            margin: "0px 0px -100px 0px",
+                          }}
+                        >
+                          {panel.heading}
+                        </motion.h5>
 
                         {panel.lines &&
                           panel.lines.map((line, i) => (
-                            <p
+                            <motion.p
+                              initial={{ opacity: 0, y: 24 }}
+                              whileInView={{
+                                opacity: 1,
+                                y: 0,
+                                transition: {
+                                  duration: 0.3,
+                                  ease: "easeOut",
+                                  delay: 0,
+                                },
+                              }}
+                              viewport={{
+                                once: true,
+                                margin: "0px 0px -100px 0px",
+                              }}
                               key={i}
                               className={`mb-${
                                 i === panel.lines.length - 1 ? "0" : "1"
                               } ${i === 0 ? "small opacity-75" : ""}`}
                             >
                               {line}
-                            </p>
+                            </motion.p>
                           ))}
 
                         {panel.link && (
@@ -176,33 +198,30 @@ const Contact = () => {
                         )}
                       </div>
                     </div>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Contact Section */}
         <section className="container py-5 mt-5">
           <div className="row g-4">
             {/* Left column: form */}
-            <motion.div
-              className="col-lg-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
-            >
+            <div className="col-lg-8">
               <div className="position-relative border-dotted">
                 <motion.h6
-                  className="heading m-0 fs-5 pb-2 text-muted fw-semibold d-inline-block position-relative"
-                  initial={{ opacity: 0, y: 12 }}
+                  className="heading m-0 fs-5 pb-2 text-muted fw-semibold d-inline-block position-relative me-3"
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{
                     opacity: 1,
                     y: 0,
-                    transition: { duration: 0.45, delay: 0.05 },
+                    transition: { duration: 0.3, ease: "easeOut", delay: 0 },
                   }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 >
+                  {" "}
                   <i className="bi bi-envelope-fill me-2"></i>
                   Send us a Message
                 </motion.h6>
@@ -210,39 +229,29 @@ const Contact = () => {
 
               <motion.p
                 className="text-muted mt-4"
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.45, delay: 0.1 },
+                  transition: { duration: 0.3, ease: "easeOut", delay: 0 },
                 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
               >
                 Thank you for your interest to contact us. Provide the following
                 information about your needs. This information will enable us to
                 route your response.
               </motion.p>
 
-              <motion.form
-                onSubmit={onSubmit}
-                noValidate
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.45, delay: 0.12 },
-                }}
-                viewport={{ once: true }}
-              >
+              <form onSubmit={onSubmit} noValidate>
                 <motion.div
                   className="mb-3"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{
                     opacity: 1,
                     y: 0,
-                    transition: { duration: 0.35, delay: 0.02 },
+                    transition: { duration: 0.3, ease: "easeOut", delay: 0 },
                   }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 >
                   <label className="form-label">Name</label>
                   <input
@@ -262,17 +271,17 @@ const Contact = () => {
                     </div>
                   )}
                 </motion.div>
-
                 <motion.div
                   className="mb-3"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{
                     opacity: 1,
                     y: 0,
-                    transition: { duration: 0.35, delay: 0.06 },
+                    transition: { duration: 0.3, ease: "easeOut", delay: 0 },
                   }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 >
+                  {" "}
                   <label className="form-label">Email Address</label>
                   <input
                     className={`form-control rounded-0 ${
@@ -294,14 +303,15 @@ const Contact = () => {
 
                 <motion.div
                   className="mb-3"
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{
                     opacity: 1,
                     y: 0,
-                    transition: { duration: 0.35, delay: 0.1 },
+                    transition: { duration: 0.3, ease: "easeOut", delay: 0 },
                   }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 >
+                  {" "}
                   <label className="form-label">Message</label>
                   <textarea
                     className={`form-control rounded-0 ${
@@ -323,27 +333,26 @@ const Contact = () => {
                 </motion.div>
 
                 {showCaptcha && !submitted && (
-                  <motion.div
-                    className="mb-3 d-flex justify-content-start"
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.35 },
-                    }}
-                  >
+                  <div className="mb-3 d-flex justify-content-start">
                     <ReCAPTCHA
                       ref={recaptchaRef}
                       sitekey={RECAPTCHA_SITE_KEY}
                       onChange={onCaptchaChange}
                     />
-                  </motion.div>
+                  </div>
                 )}
 
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="mb-3"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.3, ease: "easeOut", delay: 0 },
+                  }}
+                  viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 >
+                  {" "}
                   <fieldset
                     disabled={showCaptcha && !captchaToken}
                     className="p-0 m-0 border-0"
@@ -353,32 +362,15 @@ const Contact = () => {
                 </motion.div>
 
                 {submitted && (
-                  <motion.div
-                    className="alert alert-success mt-3"
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.3 },
-                    }}
-                  >
+                  <div className="alert alert-success mt-3">
                     Thanks! Your message has been sent successfully.
-                  </motion.div>
+                  </div>
                 )}
-              </motion.form>
-            </motion.div>
+              </form>
+            </div>
 
             {/* Right column */}
-            <motion.div
-              className="col-lg-4 d-flex"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, delay: 0.15 },
-              }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            >
+            <div className="col-lg-4 d-flex">
               <iframe
                 title="Office Map"
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13253.408031375453!2d151.123331!3d-33.85481800000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12af8d5bac2ea3%3A0xf1c7b975f98714f5!2sLo%20Surdo%20Braithwaite%20%26%20Co!5e0!3m2!1sen!2sus!4v1758876928984!5m2!1sen!2sus"
@@ -388,7 +380,7 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
               ></iframe>
-            </motion.div>
+            </div>
           </div>
         </section>
       </div>

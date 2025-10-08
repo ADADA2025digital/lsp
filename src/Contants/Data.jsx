@@ -1,4 +1,9 @@
-import service1 from "../assets/Images/2.jpg";
+import service1 from "../assets/Images/im6.jpg";
+import service2 from "../assets/Images/im1.jpg";
+import service3 from "../assets/Images/im2.jpg";
+import service4 from "../assets/Images/im3.jpg";
+import service5 from "../assets/Images/im4.jpg";
+import service6 from "../assets/Images/im5.jpg";
 
 import Slide1 from "../assets/Images/1.jpg";
 import Slide2 from "../assets/Images/1.jpg";
@@ -118,32 +123,26 @@ export const services = [
   {
     title: "Accounting, Taxation\nand Business",
     img: service1,
-    height: 150,
   },
   {
     title: "SMSF Taxation\nadministration and\nAuditing",
-    img: service1,
-    height: 200,
+    img: service2,
   },
   {
     title: "Audit Services",
-    img: service1,
-    height: 250,
+    img: service3,
   },
   {
     title: "Corporate\nGovernance Services",
-    img: service1,
-    height: 250,
+    img: service4,
   },
   {
     title: "Business\nDevelopment\nServices",
-    img: service1,
-    height: 200,
+    img: service5,
   },
   {
     title: "Finance and\nFinancial Planning\nService",
-    img: service1,
-    height: 150,
+    img: service6,
   },
 ];
 
@@ -364,15 +363,12 @@ export const importantCards = [
 ];
 
 export const whyChooseUs = [
-  {
-    text:
-      "Established Since 1972 Providing Business and Taxation Services to the Broader Community",
-  },
-  { text: "Over 1,000 Satisfied Clients" },
-  { text: "Client Focused" },
-  { text: "Constantly Evolving" },
-  { text: "Dedicated & Accessible Support Team" },
-  { text: "We care about our clients" },
+  { text: "Established Since 1972 Providing Business and Taxation Services to the Broader Community", icon: "bi-building" },
+  { text: "Over 1,000 Satisfied Clients", icon: "bi-people-fill" },
+  { text: "Client Focused", icon: "bi-bullseye" },
+  { text: "Constantly Evolving", icon: "bi-arrow-repeat" },
+  { text: "Dedicated & Accessible Support Team", icon: "bi-headset" },
+  { text: "We care about our clients", icon: "bi-heart-fill" },
 ];
 
 export const contactData = [
