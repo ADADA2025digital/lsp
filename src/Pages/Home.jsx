@@ -108,15 +108,8 @@ const Home = () => {
         </motion.section>
 
         {/* History Tab */}
-        <motion.section
+        <div
           className="py-4 banner mb-2"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.3, ease: "easeOut", delay: 0 },
-          }}
-          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         >
           <span className="tooltip z-0"></span>
           <motion.div
@@ -134,7 +127,7 @@ const Home = () => {
               business and taxation services to the broader community.
             </p>
           </motion.div>
-        </motion.section>
+        </div>
 
         {/* Services Section */}
         <section className="py-5 bg-white mt-5">

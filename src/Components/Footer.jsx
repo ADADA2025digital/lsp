@@ -60,36 +60,28 @@ export default function Footer() {
                   75, Lyons Road, Drummoyne, NSW - 2047
                 </Link>
               </li>
-              <li>
-                <Link
-                  className="text-decoration-none small"
-                  to="/blog"
-                  style={{ color: "#bababa" }}
-                >
-                  <i className="bi bi-envelope-fill me-2 text-white"></i>
-                  info@lsbcpas.com
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-decoration-none small"
-                  to="/properties"
-                  style={{ color: "#bababa" }}
-                >
-                  <i className="bi bi-telephone-fill me-2 text-white"></i>
-                  02 9819 7799
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-decoration-none small"
-                  to="/contact"
-                  style={{ color: "#bababa" }}
-                >
-                  <i className="bi bi-telephone-inbound-fill me-2 text-white"></i>
-                  02 9819 7653
-                </Link>
-              </li>
+<li>
+  <a
+    className="text-decoration-none small"
+    href="mailto:info@lsbcpas.com"
+    style={{ color: "#bababa" }}
+  >
+    <i className="bi bi-envelope-fill me-2 text-white"></i>
+    info@lsbcpas.com
+  </a>
+</li>
+
+<li>
+  <a
+    className="text-decoration-none small"
+    href="tel:0298197653"
+    style={{ color: "#bababa" }}
+  >
+    <i className="bi bi-telephone-inbound-fill me-2 text-white"></i>
+    02 9819 7653
+  </a>
+</li>
+
             </ul>
           </motion.div>
 
@@ -168,9 +160,10 @@ export default function Footer() {
       >
         <div className="container">
           <div className="row align-items-center text-center">
-            <p className="m-0">
+            <p className="m-0 small">
               Copyright © {new Date().getFullYear()}. All rights reserved to LO
-              SURDO Braithwaite. Web solution by ADADA Digital
+              SURDO Braithwaite. <br />
+              Web solution by ADADA Digital
             </p>
           </div>
         </div>
