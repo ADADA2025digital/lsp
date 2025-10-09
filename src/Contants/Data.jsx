@@ -30,13 +30,13 @@ export const sliderImages = [
 export const team = [
   {
     name: "Taran Singh",
-    degrees: "B.Com, CA",
+    degrees: "B.Com, CA, DFP",
     paragraphs: [
       "Taran is highly motivated, focused and proactive professional. He has extensive years of background in advising clients from small to medium sized businesses across a range of industries specialising in Professional, Retail & Hospitality, Construction, Real Estate, Importing and Manufacturing.",
       "Taran’s main passion is working with business owners to assist them in improving their business bottom line which in turn also focuses on the business owners personal wealth and importantly developing a work/life balance.",
       "He has great communication skills and his principal areas of expertise are Structuring, Business and Tax Strategies & Wealth Management.",
       "Taran has acquired a strong grounding in the specialised area of superannuation, particularly self-managed superannuation funds. He is also a registered SMSF Auditor.",
-      "Taran is currently undertaking Diploma of Financial Planning along with being an active member in his community.",
+      "Taran is a member of Chartered Accountants Australia and New Zealand and holds a Diploma in Financial Planning, while also being an active contributor to his community.",
     ],
     email: "taran@lsbca.com.au",
   },
@@ -363,8 +363,8 @@ export const importantCards = [
 ];
 
 export const whyChooseUs = [
-  { text: "Established Since 1972 Providing Business and Taxation Services to the Broader Community", icon: "bi-building" },
-  { text: "Over 1,000 Satisfied Clients", icon: "bi-people-fill" },
+  { text: "Established Since 1972", icon: "bi-building" },
+  { text: "Over 2,500 Satisfied Clients", icon: "bi-people-fill" },
   { text: "Client Focused", icon: "bi-bullseye" },
   { text: "Constantly Evolving", icon: "bi-arrow-repeat" },
   { text: "Dedicated & Accessible Support Team", icon: "bi-headset" },
@@ -375,20 +375,20 @@ export const contactData = [
   {
     icon: "bi-clock",
     heading: "Opening Times",
-    lines: ["From Monday to Friday", "9:00 am to 5:00 pm"],
+    lines: ["From Monday to Friday", "8:30 am to 5:00 pm"],
   },
   {
     icon: "bi-telephone",
     heading: "Contact us",
-    link: "tel:+61298197799",
+    link: "tel:(02) 9819 7799",
     linkText: "(02) 9819 7799",
     note: "Call us during business hours",
   },
   {
     icon: "bi-envelope",
     heading: "Email us:",
-    link: "mailto:info@isbca.com.au",
-    linkText: "info@isbca.com.au",
+    link: "mailto:info@lsbca.com.au",
+    linkText: "info@lsbca.com.au",
     note: "We reply within 1–2 business days",
   },
 ];
@@ -396,7 +396,8 @@ export const contactData = [
 // seo
 export const seoData = {
   home: {
-    title: "Lo Surdo Braithwaite | Providing business and taxation services to the broader community.",
+    title:
+      "Lo Surdo Braithwaite | Providing business and taxation services to the broader community.",
   },
   about: {
     title: "About Us | Lo Surdo Braithwaite",

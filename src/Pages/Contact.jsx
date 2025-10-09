@@ -237,9 +237,9 @@ const Contact = () => {
                 }}
                 viewport={{ once: true, margin: "0px 0px -100px 0px" }}
               >
-                Thank you for your interest to contact us. Provide the following
-                information about your needs. This information will enable us to
-                route your response.
+                Fill in the contact form below to connect. Alternatively, you
+                can contact us via email at info@lsbca.com.au or call us on 02
+                9819 7799
               </motion.p>
 
               <form onSubmit={onSubmit} noValidate>

@@ -60,28 +60,27 @@ export default function Footer() {
                   75, Lyons Road, Drummoyne, NSW - 2047
                 </Link>
               </li>
-<li>
-  <a
-    className="text-decoration-none small"
-    href="mailto:info@lsbcpas.com"
-    style={{ color: "#bababa" }}
-  >
-    <i className="bi bi-envelope-fill me-2 text-white"></i>
-    info@lsbcpas.com
-  </a>
-</li>
+              <li>
+                <a
+                  className="text-decoration-none small"
+                  href="mailto:info@lsbca.com.au"
+                  style={{ color: "#bababa" }}
+                >
+                  <i className="bi bi-envelope-fill me-2 text-white"></i>
+                  info@lsbca.com.au
+                </a>
+              </li>
 
-<li>
-  <a
-    className="text-decoration-none small"
-    href="tel:0298197653"
-    style={{ color: "#bababa" }}
-  >
-    <i className="bi bi-telephone-inbound-fill me-2 text-white"></i>
-    02 9819 7653
-  </a>
-</li>
-
+              <li>
+                <a
+                  className="text-decoration-none small"
+                  href="tel:02 9819 7799"
+                  style={{ color: "#bababa" }}
+                >
+                  <i className="bi bi-telephone-inbound-fill me-2 text-white"></i>
+                  02 9819 7799
+                </a>
+              </li>
             </ul>
           </motion.div>
 

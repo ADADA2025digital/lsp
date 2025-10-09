@@ -205,7 +205,7 @@ const Home = () => {
               }}
               viewport={{ once: true, margin: "0px 0px -100px 0px" }}
             >
-              IT'S IMPORTANT
+              Our Commitment
             </motion.h2>
 
             <motion.div
@@ -314,7 +314,7 @@ const Home = () => {
             </motion.div>
 
             <div className="d-flex justify-content-center text-center mt-5">
-              <GlobalButton text="Contact" href="/contact" className="mt-3" />
+              <GlobalButton text="Connect with US" href="/contact" className="mt-3" />
             </div>
           </div>
         </motion.section>
