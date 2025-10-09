@@ -119,7 +119,7 @@ const Home = () => {
         </div>
 
         {/* Services Section */}
-        <section className="py-5 bg-white mt-5">
+        <section className="py-5 bg-white">
           <div className="container">
             <motion.h2
               className="text-center fw-semibold mb-5 heading dark-text"
@@ -292,7 +292,7 @@ const Home = () => {
                       className="service-underline mb-5"
                       style={{ transformOrigin: "left" }}
                     />
-                    <div class="choose-card-bg"></div>
+                    <div className="choose-card-bg"></div>
 
                     <p className="mb-0 text-body-emphasis dark-text">
                       {item.text}

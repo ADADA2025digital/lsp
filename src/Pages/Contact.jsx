@@ -112,7 +112,7 @@ const Contact = () => {
 
         {/* Contact Details section */}
         <section className="position-relative text-white mt-5">
-          <div className="container contact-hero p-5">
+          <div className="container contact-hero p-5 overflow-hidden position-relative">
             <div className="overlay position-absolute top-0 start-0 w-100 h-100"></div>
 
             <div className="row g-0 position-relative overflow-hidden shadow">

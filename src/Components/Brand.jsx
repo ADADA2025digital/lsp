@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const Brand = () => {
   return (
-    <section className="py-4 banner mb-2">
+    <section className="py-4 banner">
       <span className="tooltip z-0"></span>
       <div className="container text-center text-white">
         <motion.p
