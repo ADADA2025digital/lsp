@@ -108,25 +108,14 @@ const Home = () => {
         </motion.section>
 
         {/* History Tab */}
-        <div
-          className="py-4 banner mb-2"
-        >
+        <div className="py-4 banner mb-2">
           <span className="tooltip z-0"></span>
-          <motion.div
-            className="container text-center text-white"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.3, ease: "easeOut", delay: 0 },
-            }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-          >
+          <div className="container text-center text-white">
             <p className="m-0 heading fs-5">
               Lo Surdo Braithwaite has been established since 1972 providing
               business and taxation services to the broader community.
             </p>
-          </motion.div>
+          </div>
         </div>
 
         {/* Services Section */}
@@ -314,7 +303,11 @@ const Home = () => {
             </motion.div>
 
             <div className="d-flex justify-content-center text-center mt-5">
-              <GlobalButton text="Connect with US" href="/contact" className="mt-3" />
+              <GlobalButton
+                text="Connect with US"
+                href="/contact"
+                className="mt-3"
+              />
             </div>
           </div>
         </motion.section>
