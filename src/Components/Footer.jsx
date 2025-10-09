@@ -51,14 +51,14 @@ export default function Footer() {
             </div>
             <ul className="list-unstyled lh-lg mt-4">
               <li>
-                <Link
+                <a
                   className="text-decoration-none small"
-                  to="/about"
+                  href="https://maps.app.goo.gl/W2j7kwJKervHgQFe9"
                   style={{ color: "#bababa" }}
                 >
                   <i className="bi bi-house-fill me-2 text-white"></i>
                   75, Lyons Road, Drummoyne, NSW - 2047
-                </Link>
+                </a>
               </li>
               <li>
                 <a
