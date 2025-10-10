@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   seoData,
   importantCards,
@@ -8,7 +9,8 @@ import {
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SeoHead from "../Components/SeoHead";
-import Video from "../assets/Video/video.mp4";
+import Slide1 from "../assets/Images/2.jpeg";
+import Slide2 from "../assets/Images/9.jpeg";
 import BG2 from "../assets/Images/bg2.jpg";
 import GlobalButton from "../Components/Button";
 import ServiceCard from "../Components/ServiceCard";
@@ -30,14 +32,25 @@ const Home = () => {
     },
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const images = [Slide1, Slide2];
+
+  // Auto slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % images.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  // Manual navigation functions
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
   };
 
-  const containerStagger = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.12 } },
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
   };
 
   return (
@@ -46,66 +59,101 @@ const Home = () => {
 
       <div className="container-fluid p-0">
         {/* Hero Section */}
-        <motion.section
+        <section
           className="hero-section position-relative"
           style={{ height: "80vh" }}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.3, ease: "easeOut", delay: 0 },
-          }}
-          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         >
-          <video
-            className="position-absolute top-0 start-0 w-100 h-100"
-            autoPlay
-            loop
-            muted
-            playsInline
+          {/* Image Slider Container */}
+          <div className="position-absolute top-0 start-0 w-100 h-100 overflow-hidden">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="position-absolute top-0 start-0 w-100 h-100"
+                style={{
+                  opacity: index === currentSlide ? 1 : 0,
+                  transition: "opacity 600ms ease",
+                  pointerEvents: index === currentSlide ? "auto" : "none",
+                }}
+              >
+                <img
+                  src={image}
+                  alt={`Hero Background ${index + 1}`}
+                  className="w-100 h-100"
+                  style={{ objectFit: "cover", display: "block" }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Bootstrap Arrows and Indicators (same as above) */}
+          <button
+            className="btn btn-outline-light position-absolute top-50 start-0 translate-middle-y ms-3 slider-arrow d-flex align-items-center justify-content-center"
+            onClick={prevSlide}
             style={{
-              objectFit: "cover",
-              zIndex: -1,
+              zIndex: 10,
+              width: "50px",
+              height: "50px",
             }}
           >
-            <source src={Video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+            <i className="bi bi-chevron-left fs-5"></i>
+          </button>
+
+          <button
+            className="btn btn-outline-light position-absolute top-50 end-0 translate-middle-y me-3 slider-arrow d-flex align-items-center justify-content-center"
+            onClick={nextSlide}
+            style={{
+              zIndex: 10,
+              width: "50px",
+              height: "50px",
+            }}
+          >
+            <i className="bi bi-chevron-right fs-5"></i>
+          </button>
+
+          <div
+            className="position-absolute bottom-0 start-50 translate-middle-x mb-5"
+            style={{ zIndex: 10 }}
+          >
+            <div className="d-flex gap-2">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  className={`btn p-0 ${
+                    index === currentSlide ? "active" : ""
+                  }`}
+                  onClick={() => setCurrentSlide(index)}
+                  style={{
+                    width: "12px",
+                    height: "12px",
+                    borderRadius: "50%",
+                    backgroundColor:
+                      index === currentSlide ? "#fff" : "rgba(255,255,255,0.5)",
+                    border: "2px solid #fff",
+                    transition: "all 0.3s ease",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
 
           <div className="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
 
-          <motion.div
-            className="container d-flex flex-column justify-content-center align-items-center text-center text-light h-100"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.3, ease: "easeOut", delay: 0 },
-            }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-          >
-            <motion.h2 className="fw-bold display-5 mb-4" variants={fadeUp}>
+          {/* Static content */}
+          <div className="container d-flex flex-column justify-content-center align-items-center text-center text-light h-100 position-relative content">
+            <h2 className="fw-bold display-5 mb-4">
               "LARGE ENOUGH TO OFFER THE EXPERTISE YOU NEED, <br />
               SMALL ENOUGH TO WORK ONE-ON-ONE."
-            </motion.h2>
+            </h2>
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.3, ease: "easeOut", delay: 0 },
-              }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            >
+            <div className="mt-3">
               <GlobalButton
                 text="Book Your Consult Now"
                 href="/contact"
                 className="mt-3"
               />
-            </motion.div>
-          </motion.div>
-        </motion.section>
+            </div>
+          </div>
+        </section>
 
         {/* History Tab */}
         <div className="py-4 banner mb-2">
